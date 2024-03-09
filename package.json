@@ -1,0 +1,105 @@
+{
+  "name": "json-fetcher-cache",
+  "version": "0.0.0-development",
+  "description": "Utility for fetching and caching JSON for a configurable amount of time",
+  "main": "jsoncache.js",
+  "scripts": {
+    "test": "nyc mocha",
+    "build-docs": "jsdoc -c jsdoc.conf -d docs",
+    "semantic-release": "semantic-release",
+    "lint": "eslint jsoncache.js",
+    "lint:fix": "eslint jsoncache.js --fix",
+    "coverage": "npm test && nyc report --reporter=text-lcov | coveralls"
+  },
+  "keywords": [
+    "json",
+    "cache"
+  ],
+  "author": "TobiTenno",
+  "license": "Apache-2.0",
+  "dependencies": {},
+  "devDependencies": {
+    "@types/chai": "^4.2.2",
+    "chai": "^4.1.2",
+    "coveralls": "^3.1.1",
+    "decache": "^4.4.0",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.18.0",
+    "mocha": "^10.0.0",
+    "nyc": "^15.1.0"
+  },
+  "homepage": "https://github.com/ayumisole/json-fetcher-cache.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ayumisole/json-fetcher-cache.git"
+  },
+  "release": {
+    "analyzeCommits": {
+      "preset": "angular",
+      "releaseRules": [
+        {
+          "type": "docs",
+          "scope": "README",
+          "release": "patch"
+        },
+        {
+          "type": "breaking",
+          "release": "major"
+        },
+        {
+          "type": "major",
+          "release": "major"
+        }
+      ],
+      "parserOpts": {
+        "noteKeywords": [
+          "BREAKING CHANGE",
+          "BREAKING CHANGES",
+          "BREAKING"
+        ]
+      }
+    }
+  },
+  "eslintConfig": {
+    "extends": "airbnb-base",
+    "parserOptions": {
+      "sourceType": "script"
+    },
+    "rules": {
+      "valid-jsdoc": [
+        "error",
+        {
+          "requireReturn": false,
+          "requireReturnDescription": false,
+          "preferType": {
+            "String": "string",
+            "Number": "number",
+            "Boolean": "boolean",
+            "Function": "function",
+            "object": "Object",
+            "date": "Date",
+            "error": "Error"
+          },
+          "prefer": {
+            "return": "returns"
+          }
+        }
+      ],
+      "strict": [
+        "error",
+        "safe"
+      ],
+      "linebreak-style": "off"
+    }
+  },
+  "nyc": {
+    "reporter": [
+      "text",
+      "lcov"
+    ]
+  },
+  "mocha": {
+    "exit": true
+  }
+}
